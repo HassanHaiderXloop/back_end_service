@@ -11,7 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.micro.back_end_service.Entity.Hotel;
 import com.micro.back_end_service.Repo.HotelRepo;
 import com.micro.back_end_service.Ser.HotelServiceImpl;
 
@@ -25,8 +24,8 @@ public class HotelServiceTest {
     @Mock
     private HotelRepo hotelRepo;
 
-    // @InjectMocks
-    // private HotelServiceImpl hotelServiceImpl;
+    @InjectMocks
+    private HotelServiceImpl hotelServiceImpl;
 
     @Test
     void CreateHotelTest() {

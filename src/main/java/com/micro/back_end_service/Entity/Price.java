@@ -1,45 +1,49 @@
 package com.micro.back_end_service.Entity;
+import java.util.Date;
 
-import java.util.List;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+// import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Builder.ObtainVia;
 
 @Data
-@Builder
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Hotel {
+public class Price {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
-    private String description;
-    private String longDescription;
-    private String experienceLevel;
-    private boolean hasPool;
-    private double pricePerNight;
-    private String urlString;
-  
-    @OneToMany(mappedBy = "hotel")
-    private List<Price> prices;
-
-   
-
-
-
     
+    @Column(nullable = false)
+    private String address;
+
+    @Column(nullable = false)
+    private Long priceExpense;
+
+    @Column(nullable = false)
+    private Date arivalDate;
+
+    @Column(nullable = false)
+    private Date departureDate;
+
+    @Column(nullable = false)
+    private Long tax;
+
+    @ManyToOne
+    @JoinColumn(name = "hotel_id")
+    private Hotel hotel;
     
 }
